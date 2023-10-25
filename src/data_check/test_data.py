@@ -1,3 +1,8 @@
+'''
+This module tests the data and raise errors if data is not consistent
+
+Date: 24-Oct-2024
+'''
 import pandas as pd
 import numpy as np
 import scipy.stats
@@ -63,3 +68,21 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
 ########################################################
 # Implement here test_row_count and test_price_range   #
 ########################################################
+def test_row_count(data):
+    """
+    Testing the shape of the dataset (not too small, not too large).
+
+    """
+    assert (data.shape[0] > 15000) & (data.shape[0] < 100000),\
+        (f"Dataset failed the test. Should be 15000 and 1000000 rows,\
+         instead the dataset has {data.shape[0]} rows."
+        )
+
+
+def test_price_range(data, min_price, max_price):
+    """
+    This function tests that the price range is between min_price and max_price
+
+    """
+    assert data["price"].between(min_price, max_price).all(),\
+    (f"Test Failed: the price should be between {min_price} and {max_price}")
