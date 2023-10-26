@@ -8,7 +8,6 @@ import wandb
 import mlflow
 import pandas as pd
 from sklearn.metrics import mean_absolute_error
-
 from wandb_utils.log_artifact import log_artifact
 
 
@@ -35,6 +34,7 @@ def go(args):
 
     logger.info("Loading model and performing inference on test set")
     sk_pipe = mlflow.sklearn.load_model(model_local_path)
+    logger.info("sk_pipe run")
     y_pred = sk_pipe.predict(X_test)
 
     logger.info("Scoring")
