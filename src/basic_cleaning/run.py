@@ -40,8 +40,8 @@ def go(args):
                 is between {args.min_price} and {args.max_price}")
 
     idx = df["price"].between(args.min_price, args.max_price) & \
-        df['longitude'].between(-74.25, -73.50) & \
-        df['latitude'].between(40.5, 41.2)
+        df['longitude'].between(-74.250, -73.50) & \
+        df['latitude'].between(40.50, 41.20)
 
     new_df = df[idx].copy()
 
